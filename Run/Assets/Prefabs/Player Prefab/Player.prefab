@@ -47,7 +47,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1332657107906751650
 Transform:
   m_ObjectHideFlags: 0
@@ -10430,7 +10430,10 @@ GameObject:
   - component: {fileID: 4479852031057963547}
   - component: {fileID: 564089032100573798}
   - component: {fileID: 6363053846677274422}
+<<<<<<< HEAD
+=======
   - component: {fileID: 4382590345378103620}
+>>>>>>> 821ecad1b99f5f08fa226b4aaa751f9e9399d26d
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -10610,6 +10613,8 @@ MonoBehaviour:
   - {fileID: 6290501701738956725}
   - {fileID: 1508658605716466689}
   - {fileID: 6436498692296771258}
+<<<<<<< HEAD
+=======
   currentWeaponIndex: 0
 --- !u!114 &4382590345378103620
 MonoBehaviour:
@@ -10625,6 +10630,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 15
   damage: 20
+>>>>>>> 821ecad1b99f5f08fa226b4aaa751f9e9399d26d
 --- !u!1 &3468204765080257795
 GameObject:
   m_ObjectHideFlags: 0
