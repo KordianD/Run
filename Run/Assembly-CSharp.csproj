@@ -70,6 +70,7 @@
     <Compile Include="Assets\SampleScenes\Scripts\PlaceTargetWithMouse.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\SlowMoButton.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\MouseLook.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\PlayerAttack.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerFootsteps.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerSprintAndCrouch.cs" />
