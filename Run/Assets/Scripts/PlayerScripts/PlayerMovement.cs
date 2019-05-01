@@ -43,6 +43,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void SetSpeed(float val)
+    {
+        speed = val;
+    }
+
     private CharacterController _characterController;
     private Vector3 _moveDirection;
     private float _gravity = 20f;
