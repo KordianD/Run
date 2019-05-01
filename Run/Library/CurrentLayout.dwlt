@@ -44,10 +44,10 @@ MonoBehaviour:
     y: 30
     width: 1536
     height: 731
-  m_MinSize: {x: 681, y: 498}
-  m_MaxSize: {x: 14004, y: 14048}
+  m_MinSize: {x: 679, y: 498}
+  m_MaxSize: {x: 14002, y: 14048}
   vertical: 0
-  controlID: 110
+  controlID: 103
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -67,8 +67,8 @@ MonoBehaviour:
     y: 0
     width: 396
     height: 731
-  m_MinSize: {x: 277, y: 74}
-  m_MaxSize: {x: 4002, y: 4024}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_MinSize: {x: 404, y: 498}
   m_MaxSize: {x: 10002, y: 14048}
   vertical: 1
-  controlID: 37
+  controlID: 11
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -245,7 +245,7 @@ MonoBehaviour:
   m_MinSize: {x: 404, y: 224}
   m_MaxSize: {x: 8004, y: 4024}
   vertical: 0
-  controlID: 38
+  controlID: 117
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -475,20 +475,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/PlayerScripts
+    - Assets/Sounds/Footsteps
   m_ViewMode: 1
   m_StartGridSize: 38
   m_LastFolders:
-  - Assets/Scripts/PlayerScripts
+  - Assets/Sounds/Footsteps
   m_LastFoldersGridSize: 38
   m_LastProjectPath: D:\Studia\TGK\Run\Run
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 13}
-    m_SelectedIDs: 8c900000
-    m_LastClickedID: 37004
-    m_ExpandedIDs: 0000000000900000169000004a9000005c9000007e9000009c900000fe900000789100007a9100003c920000ee920000009300000693000044930000ac94000086950000a4950000189600002a9600002c9600003a96000000ca9a3b
+    scrollPos: {x: 0, y: 77}
+    m_SelectedIDs: b8180000
+    m_LastClickedID: 6328
+    m_ExpandedIDs: 000000006a0b0000ce0b0000800c0000a20c0000fc0c0000840d0000b20e00008e0f0000940f000088110000de120000f8120000041300000c140000be170000f4190000241a0000a41a0000e21a0000041b0000061b0000801b000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -516,7 +516,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000000900000169000004a9000005c9000007e9000009c900000fe900000789100007a9100003c920000ee9200000693000044930000ac94000086950000a4950000189600002a9600003a960000
+    m_ExpandedIDs: 000000006a0b0000ce0b0000800c0000a20c0000fc0c0000840d0000b20e00008e0f0000940f000088110000de120000f8120000041300000c140000be170000f4190000241a0000e21a0000041b0000061b0000801b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -635,9 +635,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 183affff
-      m_LastClickedID: -50664
-      m_ExpandedIDs: 0e3affff183affffca40ffff
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 22f5ffffd4fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 

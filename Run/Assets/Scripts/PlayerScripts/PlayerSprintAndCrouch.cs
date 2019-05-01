@@ -10,14 +10,14 @@ public class PlayerSprintAndCrouch : MonoBehaviour
         _playerMovement = GetComponent<PlayerMovement>();
         _lookRoot = transform.GetChild(0);
 
-        //_playerFootsteps = GetComponentInChildren<PlayerFootsteps>();
+        _playerFootsteps = GetComponentInChildren<PlayerFootsteps>();
     }
 
     void Start()
     {
-        //_playerFootsteps.volumeMax = _walkVolumeMax;
-        //_playerFootsteps.volumeMin = _walkVolumeMin;
-        //_playerFootsteps.stepDistance = _walkStepDistance;
+        _playerFootsteps.volumeMax = _walkVolumeMax;
+        _playerFootsteps.volumeMin = _walkVolumeMin;
+        _playerFootsteps.stepDistance = _walkStepDistance;
 
     }
 
@@ -25,28 +25,28 @@ public class PlayerSprintAndCrouch : MonoBehaviour
     void Update()
     {
         Sprint();
-        //Crouch();
+        Crouch();
     }
     void Sprint()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift) && !_isCrouching)
         {
             _playerMovement.SetSpeed(_sprintSpeed);
-            /*
+            
             _playerMovement.SetSpeed(_sprintSpeed);
 
             _playerFootsteps.stepDistance = _sprintStepDistance;
             _playerFootsteps.volumeMin = _sprintVolume;
-            _playerFootsteps.volumeMax = _sprintVolume;*/
+            _playerFootsteps.volumeMax = _sprintVolume;
         }
 
         if (Input.GetKeyUp(KeyCode.LeftShift) && !_isCrouching)
         {
             _playerMovement.SetSpeed(_moveSpeed);
 
-            //_playerFootsteps.stepDistance = _walkStepDistance;
-            //_playerFootsteps.volumeMax = _walkVolumeMax;
-            //_playerFootsteps.volumeMin = _walkVolumeMin;*/
+            _playerFootsteps.stepDistance = _walkStepDistance;
+            _playerFootsteps.volumeMax = _walkVolumeMax;
+            _playerFootsteps.volumeMin = _walkVolumeMin;
 
         }
     }
@@ -55,7 +55,7 @@ public class PlayerSprintAndCrouch : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.C))
         {
-            /*
+            
             if (_isCrouching)
             {
                 _lookRoot.localPosition = new Vector3(0f, _standHeight, 0f);
@@ -77,7 +77,7 @@ public class PlayerSprintAndCrouch : MonoBehaviour
                 _playerFootsteps.volumeMin = _crouchVolume;
 
                 _isCrouching = true;
-            }*/
+            }
         }
     }
 
@@ -89,12 +89,11 @@ public class PlayerSprintAndCrouch : MonoBehaviour
     private float _standHeight = 1.6f;
     private float _crouchHeight = 1f;
     private bool _isCrouching;
-    /*
     private PlayerFootsteps _playerFootsteps;
     private float _sprintVolume = 1f;
     private float _crouchVolume = 0.1f;
     private float _walkVolumeMin = 0.2f, _walkVolumeMax = 0.6f;
     private float _walkStepDistance = 0.4f;
     private float _sprintStepDistance = 0.25f;
-    private float _crouchStepDistance = 0.5f;*/
+    private float _crouchStepDistance = 0.5f;
 }
