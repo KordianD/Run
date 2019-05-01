@@ -73,8 +73,12 @@
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerFootsteps.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerSprintAndCrouch.cs" />
+    <Compile Include="Assets\Scripts\Utils\AnimationUtils.cs" />
+    <Compile Include="Assets\Scripts\Utils\TagsExtensions.cs" />
     <Compile Include="Assets\Scripts\Utils\TagUtils.cs" />
     <Compile Include="Assets\Scripts\Utils\TimeUtils.cs" />
+    <Compile Include="Assets\Scripts\Weapons Scripts\WeaponHandler.cs" />
+    <Compile Include="Assets\Scripts\Weapons Scripts\WeaponManager.cs" />
     <None Include="Assets\Shaders\Standard\_Antialiasing\SSAA.shader" />
     <None Include="Assets\Shaders\Standard\_DepthOfField\DepthOfField34.shader" />
     <None Include="Assets\Shaders\Standard\_Antialiasing\FXAAPreset3.shader" />
