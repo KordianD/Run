@@ -8,6 +8,7 @@ TagManager:
   - Crosshair
   - Look Root
   - FP Camera
+  - Spear
   layers:
   - Default
   - TransparentFX

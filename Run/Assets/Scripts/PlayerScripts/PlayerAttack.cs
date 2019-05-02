@@ -15,6 +15,11 @@ public class PlayerAttack : MonoBehaviour
     private GameObject _croshair;
     private bool _isAiming;
 
+    [SerializeField]
+    private GameObject _spearPrefab;
+    [SerializeField]
+    private Transform _spearStartPosition;
+
     private void Awake()
     {
         _weaponManager = GetComponent<WeaponManager>();
@@ -48,6 +53,8 @@ public class PlayerAttack : MonoBehaviour
             {
                 _nextTimeToFire = Time.time + 1f / fireRate;
                 _weaponManager.GetCurrentSelectedWeapon().ShootAnimation();
+
+                BulletFired();
             }
         }
         else
@@ -63,7 +70,7 @@ public class PlayerAttack : MonoBehaviour
                 {
                     _weaponManager.GetCurrentSelectedWeapon().ShootAnimation();
 
-                    //BulletFired();
+                    BulletFired();
                 }
                 else
                 {
@@ -77,7 +84,7 @@ public class PlayerAttack : MonoBehaviour
                         }
                         else if (_weaponManager.GetCurrentSelectedWeapon().bulletType == WeaponBulletType.SPEAR)
                         {
-
+                            ThrowSpear(true);
                         }
                     }
                 }
@@ -118,6 +125,24 @@ public class PlayerAttack : MonoBehaviour
                 _weaponManager.GetCurrentSelectedWeapon().Aim(false);
                 _isAiming = false;
             }
+        }
+    }
+    void ThrowSpear(bool throwSpear)
+    {
+        if (throwSpear)
+        {
+            GameObject spear = Instantiate(_spearPrefab);
+            spear.transform.position = _spearStartPosition.position;
+            spear.GetComponent<SpearScript>().Launch(_mainCam);
+        }
+    }
+
+    void BulletFired()
+    {
+        RaycastHit hit;
+        if( Physics.Raycast(_mainCam.transform.position, _mainCam.transform.forward, out hit))
+        {
+            print("WE HIT: " + hit.transform.gameObject.name);
         }
     }
 }
