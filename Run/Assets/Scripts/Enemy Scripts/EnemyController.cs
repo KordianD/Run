@@ -146,6 +146,19 @@ public class EnemyController : MonoBehaviour
         _navAgent.SetDestination(navHit.position);
     }
 
+    void TurnOnAttackPoint()
+    {
+        attackPoint.SetActive(true);
+    }
+
+    void TurnOffAttackPoint()
+    {
+        if (attackPoint.activeInHierarchy)
+        {
+            attackPoint.SetActive(false);
+        }
+    }
+
     private EnemyAnimator _enemyAnim;
     private NavMeshAgent _navAgent;
     private EnemyState _enemyState;
@@ -162,5 +175,7 @@ public class EnemyController : MonoBehaviour
     public float waitBeforeAttack = 2f;
     private float _attackTimer;
     private Transform target;
+    public GameObject attackPoint;
+
 
 }
