@@ -70,7 +70,9 @@
     <Compile Include="Assets\SampleScenes\Scripts\PlaceTargetWithMouse.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\SlowMoButton.cs" />
     <Compile Include="Assets\Scripts\Enemy Scripts\EnemyAnimator.cs" />
+    <Compile Include="Assets\Scripts\Enemy Scripts\EnemyAudio.cs" />
     <Compile Include="Assets\Scripts\Enemy Scripts\EnemyController.cs" />
+    <Compile Include="Assets\Scripts\Game Manager\EnemyManager.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\AttackScript.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\HealthScript.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\MouseLook.cs" />
@@ -79,6 +81,7 @@
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerFootsteps.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerSprintAndCrouch.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\PlayerStats.cs" />
     <Compile Include="Assets\Scripts\Utils\AnimationUtils.cs" />
     <Compile Include="Assets\Scripts\Utils\TagsExtensions.cs" />
     <Compile Include="Assets\Scripts\Utils\TagUtils.cs" />

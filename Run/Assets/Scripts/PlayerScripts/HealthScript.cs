@@ -14,11 +14,12 @@ public class HealthScript : MonoBehaviour
             _enemyController = GetComponent<EnemyController>();
             _navAgent = GetComponent<NavMeshAgent>();
 
+            _enemyAudio = GetComponentInChildren<EnemyAudio>();
         }
 
         if(isPlayer)
         {
-
+            _playerStats = GetComponent<PlayerStats>();
         }
     }
 
@@ -32,7 +33,7 @@ public class HealthScript : MonoBehaviour
 
         if(isPlayer)
         {
-
+            _playerStats.DisplayHealthStats(health);
         }
 
         if(isBoar || isCannibal)
@@ -54,13 +55,15 @@ public class HealthScript : MonoBehaviour
     {
         if(isCannibal)
         {
-            print("tutaj");
             GetComponent<Animator>().enabled = false;
             GetComponent<BoxCollider>().isTrigger = false;
             GetComponent<Rigidbody>().AddTorque(-transform.forward * 10f);
             _enemyController.enabled = false;
             _navAgent.enabled = false;
             _enemyAnim.enabled = false;
+            StartCoroutine(DeadSound());
+
+            EnemyManager.instance.EnemyDied(true);
 
         }
         if(isBoar)
@@ -69,6 +72,9 @@ public class HealthScript : MonoBehaviour
             _navAgent.isStopped = true;
             _enemyController.enabled = false;
             _enemyAnim.Dead();
+
+            StartCoroutine(DeadSound());
+            EnemyManager.instance.EnemyDied(false);
         }
         if(isPlayer)
         {
@@ -81,6 +87,7 @@ public class HealthScript : MonoBehaviour
             GetComponent<PlayerMovement>().enabled = false;
             GetComponent<PlayerAttack>().enabled = false;
             GetComponent<WeaponManager>().GetCurrentSelectedWeapon().gameObject.SetActive(false);
+            EnemyManager.instance.StopSpawning();
         }
 
         if(tag == TagsExtensions.PLAYER_TAG)
@@ -103,6 +110,12 @@ public class HealthScript : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    IEnumerator DeadSound()
+    {
+        yield return new WaitForSeconds(0.3f);
+        _enemyAudio.PlayDeadSound();
+    }
+
     private EnemyAnimator _enemyAnim;
     private NavMeshAgent _navAgent;
     private EnemyController _enemyController;
@@ -110,4 +123,7 @@ public class HealthScript : MonoBehaviour
     public bool isPlayer, isBoar, isCannibal;
 
     private bool _isDead;
+
+    private EnemyAudio _enemyAudio;
+    private PlayerStats _playerStats;
 }

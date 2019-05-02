@@ -44,12 +44,14 @@ public class WeaponHandler : MonoBehaviour
 
     public void TurnOnMuzzleFlash()
     {
-        _muzzleFlash.SetActive(true);
+        //_muzzleFlash.SetActive(true);
     }
 
     public void TurnOffMuzzleFlash()
     {
-        _muzzleFlash.SetActive(false);
+        //_muzzleFlash.SetActive(false);
+        //_muzzleFla;
+        //_muzzleFlash.SetActive(false);
     }
 
     void PlayShootSound()

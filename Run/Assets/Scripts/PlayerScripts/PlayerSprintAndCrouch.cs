@@ -11,6 +11,7 @@ public class PlayerSprintAndCrouch : MonoBehaviour
         _lookRoot = transform.GetChild(0);
 
         _playerFootsteps = GetComponentInChildren<PlayerFootsteps>();
+        _playerStats = GetComponent<PlayerStats>();
     }
 
     void Start()
@@ -29,15 +30,18 @@ public class PlayerSprintAndCrouch : MonoBehaviour
     }
     void Sprint()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !_isCrouching)
+        if(_sprintValue > 0f)
         {
-            _playerMovement.SetSpeed(_sprintSpeed);
-            
-            _playerMovement.SetSpeed(_sprintSpeed);
+            if (Input.GetKeyDown(KeyCode.LeftShift) && !_isCrouching)
+            {
+                _playerMovement.SetSpeed(_sprintSpeed);
 
-            _playerFootsteps.stepDistance = _sprintStepDistance;
-            _playerFootsteps.volumeMin = _sprintVolume;
-            _playerFootsteps.volumeMax = _sprintVolume;
+                _playerMovement.SetSpeed(_sprintSpeed);
+
+                _playerFootsteps.stepDistance = _sprintStepDistance;
+                _playerFootsteps.volumeMin = _sprintVolume;
+                _playerFootsteps.volumeMax = _sprintVolume;
+            }
         }
 
         if (Input.GetKeyUp(KeyCode.LeftShift) && !_isCrouching)
@@ -48,6 +52,33 @@ public class PlayerSprintAndCrouch : MonoBehaviour
             _playerFootsteps.volumeMax = _walkVolumeMax;
             _playerFootsteps.volumeMin = _walkVolumeMin;
 
+        }
+
+        if(Input.GetKey(KeyCode.LeftShift) && !_isCrouching)
+        {
+            _sprintValue -= _sprintThreshold * Time.deltaTime;
+            if(_sprintValue <= 0f)
+            {
+                _sprintValue = 0f;
+                _playerMovement.SetSpeed(_moveSpeed);
+                _playerFootsteps.stepDistance = _walkStepDistance;
+                _playerFootsteps.volumeMax = _walkVolumeMax;
+                _playerFootsteps.volumeMin = _walkVolumeMin;
+            }
+            _playerStats.DisplaStaminaStats(_sprintValue);
+        }
+        else
+        {
+            if(_sprintValue != 100f)
+            {
+                _sprintValue += (_sprintThreshold / 2f) * Time.deltaTime;
+                _playerStats.DisplaStaminaStats(_sprintValue);
+
+                if(_sprintValue > 100f)
+                {
+                    _sprintValue = 100f;
+                }
+            }
         }
     }
 
@@ -96,4 +127,7 @@ public class PlayerSprintAndCrouch : MonoBehaviour
     private float _walkStepDistance = 0.4f;
     private float _sprintStepDistance = 0.25f;
     private float _crouchStepDistance = 0.5f;
+    private PlayerStats _playerStats;
+    private float _sprintValue = 100f;
+    private float _sprintThreshold = 10f;
 }
