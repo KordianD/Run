@@ -67,13 +67,71 @@ public class EnemyController : MonoBehaviour
         {
             _enemyAnim.Walk(false);
         }
+
+        if(Vector3.Distance(transform.position, target.position) <= chaseDistance)
+        {
+            _enemyAnim.Walk(false);
+            _enemyState = EnemyState.CHASE;
+        }
     }
 
     void Chase()
-    { }
+    {
+        _navAgent.isStopped = false;
+        _navAgent.speed = runSpeed;
 
+        _navAgent.SetDestination(target.position);
+
+        if (_navAgent.velocity.sqrMagnitude > 0)
+        {
+            _enemyAnim.Run(true);
+        }
+        else
+        {
+            _enemyAnim.Run(false);
+        }
+
+        if(Vector3.Distance(transform.position, target.position) <= attackDistance)
+        {
+            _enemyAnim.Run(false);
+            _enemyAnim.Walk(false);
+            _enemyState = EnemyState.ATTACK;
+
+            if(chaseDistance != _currentChaseDistance)
+            {
+                chaseDistance = _currentChaseDistance;
+            }
+        }
+        else if (Vector3.Distance(transform.position, target.position) > chaseDistance)
+        {
+            _enemyAnim.Run(false);
+            _enemyState = EnemyState.PATROL;
+            patrolTimer = patrolForThisTime;
+            if(chaseDistance != _currentChaseDistance)
+            {
+                chaseDistance = _currentChaseDistance;
+            }
+        }
+    }
+    
     void Attack()
-    { }
+    {
+        _navAgent.velocity = Vector3.zero;
+        _navAgent.isStopped = true;
+
+        _attackTimer += Time.deltaTime;
+
+        if(_attackTimer > waitBeforeAttack)
+        {
+            _enemyAnim.Attack();
+            _attackTimer = 0f;
+        }
+
+        if(Vector3.Distance(transform.position, target.position) > attackDistance + chaseAfterAttackDistance)
+        {
+            _enemyState = EnemyState.CHASE;
+        }
+    }
 
     void SetNewRandomDestination()
     {

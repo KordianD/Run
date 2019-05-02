@@ -134,6 +134,8 @@ public class PlayerAttack : MonoBehaviour
             GameObject spear = Instantiate(_spearPrefab);
             spear.transform.position = _spearStartPosition.position;
             spear.GetComponent<SpearScript>().Launch(_mainCam);
+
+            BulletFired();
         }
     }
 
