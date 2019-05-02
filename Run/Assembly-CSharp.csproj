@@ -72,8 +72,10 @@
     <Compile Include="Assets\Scripts\Enemy Scripts\EnemyAnimator.cs" />
     <Compile Include="Assets\Scripts\Enemy Scripts\EnemyController.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\AttackScript.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\HealthScript.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\MouseLook.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerAttack.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\PlayerAxeWooshSound.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerFootsteps.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerSprintAndCrouch.cs" />

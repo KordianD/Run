@@ -159,6 +159,8 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    public EnemyState EnemyState { get; set; }
+
     private EnemyAnimator _enemyAnim;
     private NavMeshAgent _navAgent;
     private EnemyState _enemyState;
