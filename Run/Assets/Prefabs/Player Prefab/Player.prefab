@@ -10405,7 +10405,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireRate: 15
-  damage: 50
   _spearPrefab: {fileID: 2115668241126230213, guid: 9e641ac86cadbf74aac0785230097ac8,
     type: 3}
   _spearStartPosition: {fileID: 1392344026529063837}
@@ -10437,8 +10436,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44a84e3cff2a8f140901695de5f7d0ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Level: 1
   _healthStats: {fileID: 0}
   _staminaStats: {fileID: 0}
+  _scoreLabel: {fileID: 0}
+  _levelLabel: {fileID: 0}
 --- !u!1 &3468204765080257795
 GameObject:
   m_ObjectHideFlags: 0
@@ -10878,11 +10880,6 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 198023787511421944, guid: f8a36727eb20b45369ba752e0a52dab6,
-        type: 3}
-      propertyPath: LightsModule.light
-      value: 
-      objectReference: {fileID: 2584483534720930458}
     - target: {fileID: 4962459143598950, guid: f8a36727eb20b45369ba752e0a52dab6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.073
@@ -10941,12 +10938,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2476704160016096986}
   m_PrefabAsset: {fileID: 0}
---- !u!108 &2584483534720930458 stripped
-Light:
-  m_CorrespondingSourceObject: {fileID: 108908118454225984, guid: f8a36727eb20b45369ba752e0a52dab6,
-    type: 3}
-  m_PrefabInstance: {fileID: 2476704160016096986}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2476704160547102998
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10967,11 +10958,6 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 198023787511421944, guid: f8a36727eb20b45369ba752e0a52dab6,
-        type: 3}
-      propertyPath: LightsModule.light
-      value: 
-      objectReference: {fileID: 2584483533107670358}
     - target: {fileID: 4962459143598950, guid: f8a36727eb20b45369ba752e0a52dab6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.113
@@ -11024,12 +11010,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2476704160547102998}
   m_PrefabAsset: {fileID: 0}
---- !u!108 &2584483533107670358 stripped
-Light:
-  m_CorrespondingSourceObject: {fileID: 108908118454225984, guid: f8a36727eb20b45369ba752e0a52dab6,
-    type: 3}
-  m_PrefabInstance: {fileID: 2476704160547102998}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2475185541678423008 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1870737493768950, guid: f8a36727eb20b45369ba752e0a52dab6,
@@ -11056,11 +11036,6 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 198023787511421944, guid: f8a36727eb20b45369ba752e0a52dab6,
-        type: 3}
-      propertyPath: LightsModule.light
-      value: 
-      objectReference: {fileID: 2584483533933908962}
     - target: {fileID: 4962459143598950, guid: f8a36727eb20b45369ba752e0a52dab6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.073
@@ -11116,12 +11091,6 @@ GameObject:
 --- !u!4 &2472093683090173124 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4962459143598950, guid: f8a36727eb20b45369ba752e0a52dab6,
-    type: 3}
-  m_PrefabInstance: {fileID: 2476704160802987938}
-  m_PrefabAsset: {fileID: 0}
---- !u!108 &2584483533933908962 stripped
-Light:
-  m_CorrespondingSourceObject: {fileID: 108908118454225984, guid: f8a36727eb20b45369ba752e0a52dab6,
     type: 3}
   m_PrefabInstance: {fileID: 2476704160802987938}
   m_PrefabAsset: {fileID: 0}

@@ -1,13 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
-    [SerializeField]
-    private Image _healthStats, _staminaStats;
-    
+    public void Update()
+    {
+        DisplayScore();
+    }
+
+    public void DisplayScore()
+    {
+        _scoreTime += TimeUtils.DeltaTime;
+        if (!(_scoreTime >= 1)) return;
+        _scoreTime = 0;
+        Score += Level;
+        _scoreLabel.text = Score.ToString();
+        _levelLabel.text = "Level " + Level;
+    }
+
     public void DisplayHealthStats(float healthValue)
     {
         healthValue /= 100f;
@@ -21,4 +31,13 @@ public class PlayerStats : MonoBehaviour
 
         _staminaStats.fillAmount = staminaValue;
     }
+
+    public int Level = 1;
+    public int Score { get; set; }
+    private float _scoreTime = 0;
+
+    [SerializeField]
+    private Image _healthStats, _staminaStats;
+    [SerializeField]
+    private Text _scoreLabel, _levelLabel;
 }

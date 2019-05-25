@@ -10,6 +10,10 @@ TagManager:
   - FP Camera
   - Spear
   - Enemy
+  - Fire
+  - Flare
+  - CSP
+  - BSP
   layers:
   - Default
   - TransparentFX

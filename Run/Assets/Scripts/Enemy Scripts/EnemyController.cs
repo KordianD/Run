@@ -1,7 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public enum EnemyState
 {
@@ -25,19 +25,25 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(_enemyState == EnemyState.PATROL)
+        try
         {
-            Patrol();
+            if (_enemyState == EnemyState.PATROL)
+            {
+                Patrol();
+            }
+            if (_enemyState == EnemyState.CHASE)
+            {
+                Chase();
+            }
+            if (_enemyState == EnemyState.ATTACK)
+            {
+                Attack();
+            }
         }
-        if(_enemyState == EnemyState.CHASE)
+        catch (Exception e)
         {
-            Chase();
+            this.enabled = false;
         }
-        if (_enemyState == EnemyState.ATTACK)
-        {
-            Attack();
-        }
-
     }
 
     public void Awake()
@@ -50,6 +56,12 @@ public class EnemyController : MonoBehaviour
 
     void Patrol()
     {
+        if (!_navAgent.isOnNavMesh)
+        {
+            enabled = false;
+            Destroy(transform.parent.gameObject);
+            return;
+        }
         _navAgent.isStopped = false;
         _navAgent.speed = walkSpeed;
         patrolTimer += Time.deltaTime;
@@ -162,6 +174,15 @@ public class EnemyController : MonoBehaviour
         {
             attackPoint.SetActive(false);
         }
+    }
+
+    public void IncreasePower()
+    {
+        walkSpeed *= 1.4f;
+        runSpeed *= 1.4f;
+        chaseAfterAttackDistance *= 0.95f;
+        waitBeforeAttack *= 0.95f;
+        chaseDistance *= 2;
     }
 
     public EnemyState EnemyState { get; set; }

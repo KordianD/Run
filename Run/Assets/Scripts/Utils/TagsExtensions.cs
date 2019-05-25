@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TagsExtensions : MonoBehaviour
 {
@@ -18,5 +16,7 @@ public class TagsExtensions : MonoBehaviour
     public const string RUN_PARAMETER = "Run";
     public const string ATTACK_TRIGGER = "Attack";
     public const string DEAD_TRIGGER = "Dead";
+
+    public const string FLARE_TAG = "Flare";
 }
 

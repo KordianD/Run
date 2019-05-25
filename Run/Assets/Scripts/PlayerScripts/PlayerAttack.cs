@@ -7,7 +7,6 @@ public class PlayerAttack : MonoBehaviour
     private WeaponManager _weaponManager;
     private float _nextTimeToFire;
     public float fireRate = 15f;
-    public float damage = 20f;
 
     private Animator _zoomCameraAnim;
     private bool _zoomed;
@@ -147,7 +146,8 @@ public class PlayerAttack : MonoBehaviour
             print("WE HIT: " + hit.transform.gameObject.name);
             if(hit.transform.tag == TagsExtensions.ENEMY_TAG)
             {
-                hit.transform.GetComponent<HealthScript>().ApplyDamage(damage);
+                hit.transform.GetComponent<HealthScript>().ApplyDamage
+                    (DamageUtils.DamageByWeapon[_weaponManager.currentWeaponIndex]);
             }
         }
     }

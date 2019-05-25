@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
@@ -9,12 +10,11 @@ public class EnemyManager : MonoBehaviour
     [SerializeField]
     private GameObject _boarPrefab, _canibalPrefab;
 
-    public Transform[] cannibalSpawnPoints, boarSpawnPoints;
-
     [SerializeField]
     private int _cannibalEnemyCount, _boarEnemyCount;
     private int _initialCannibalCount, _initialBoarCount;
-    public float waitBeforeEnemiesTime = 10f;
+    private Vector3 _flarePosition = LocationUtils.StartedFlarePoint;
+    public float waitBeforeEnemiesTime = 1f;
 
 
     // Start is called before the first frame update
@@ -48,17 +48,21 @@ public class EnemyManager : MonoBehaviour
 
     void SpawnCannibals()
     {
-        int index = 0;
-        for(int i =0; i < _cannibalEnemyCount; i++)
+        for(var i = 0; i < _cannibalEnemyCount; i++)
         {
-            if(index >= cannibalSpawnPoints.Length)
+            var flareLocation = LocationUtils.FlareLocation;
+            if (RandomUtils._random.NextDouble() > 0.5)
             {
-                index = 0;
+                Instantiate(_canibalPrefab, _flarePosition, Quaternion.identity);
             }
-
-            Instantiate(_canibalPrefab, cannibalSpawnPoints[index].position, Quaternion.identity);
+            else
+            {
+                Instantiate(_canibalPrefab, new Vector3(
+                    RandomUtils.GetRandomNumber(flareLocation["X_MIN"], flareLocation["X_MAX"]),
+                    RandomUtils.GetRandomNumber(flareLocation["Y_MIN"], flareLocation["Y_MAX"]),
+                    RandomUtils.GetRandomNumber(flareLocation["Z_MIN"], flareLocation["Z_MAX"])), Quaternion.identity);
+            }
             print("Cannibal spawn");
-            index++;
         }
 
         _cannibalEnemyCount = 0;
@@ -66,17 +70,22 @@ public class EnemyManager : MonoBehaviour
 
     void SpawnBoars()
     {
-        int index = 0;
         for (int i = 0; i < _boarEnemyCount; i++)
         {
-            if (index >= boarSpawnPoints.Length)
+            var flareLocation = LocationUtils.FlareLocation;
+            if (RandomUtils._random.NextDouble() > 0.5)
             {
-                index = 0;
+                Instantiate(_boarPrefab, _flarePosition, Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(_boarPrefab, new Vector3(
+                    RandomUtils.GetRandomNumber(flareLocation["X_MIN"], flareLocation["X_MAX"]),
+                    RandomUtils.GetRandomNumber(flareLocation["Y_MIN"], flareLocation["Y_MAX"]),
+                    RandomUtils.GetRandomNumber(flareLocation["Z_MIN"], flareLocation["Z_MAX"])), Quaternion.identity);
             }
 
-            Instantiate(_boarPrefab, boarSpawnPoints[index].position, Quaternion.identity);
-            print("boar spawn");
-            index++;
+            print("Boar spawn");
         }
 
         _boarEnemyCount = 0;
@@ -115,5 +124,15 @@ public class EnemyManager : MonoBehaviour
     public void StopSpawning()
     {
         StopCoroutine("CheckToSpawnEnemies");
+    }
+
+    public void LevelUp(Vector3 flarePosition)
+    {
+        _initialCannibalCount += _initialCannibalCount;
+        _cannibalEnemyCount += _initialCannibalCount;
+
+        _initialBoarCount += _initialBoarCount;
+        _boarEnemyCount += _initialBoarCount;
+        _flarePosition = flarePosition;
     }
 }

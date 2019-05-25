@@ -53,7 +53,8 @@ public class HealthScript : MonoBehaviour
 
     public void PlayerDied()
     {
-        if(isCannibal)
+        var playerStats = GameObject.FindWithTag(TagsExtensions.PLAYER_TAG).GetComponent<PlayerStats>();
+        if (isCannibal)
         {
             GetComponent<Animator>().enabled = false;
             GetComponent<BoxCollider>().isTrigger = false;
@@ -64,7 +65,7 @@ public class HealthScript : MonoBehaviour
             StartCoroutine(DeadSound());
 
             EnemyManager.instance.EnemyDied(true);
-
+            playerStats.Score += KillingEnemiesScore["Cannibal"] * playerStats.Level;
         }
         if(isBoar)
         {
@@ -75,6 +76,7 @@ public class HealthScript : MonoBehaviour
 
             StartCoroutine(DeadSound());
             EnemyManager.instance.EnemyDied(false);
+            playerStats.Score += KillingEnemiesScore["Boar"] * playerStats.Level;
         }
         if(isPlayer)
         {
@@ -126,4 +128,9 @@ public class HealthScript : MonoBehaviour
 
     private EnemyAudio _enemyAudio;
     private PlayerStats _playerStats;
+    private static readonly Dictionary<string, int> KillingEnemiesScore = new Dictionary<string, int>
+    {
+        { "Cannibal", 10 },
+        { "Boar", 5 },
+    };
 }
