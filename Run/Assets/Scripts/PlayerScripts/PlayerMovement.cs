@@ -48,6 +48,13 @@ public class PlayerMovement : MonoBehaviour
         speed = val;
     }
 
+    public void Die()
+    {
+        _characterController.Move(transform.TransformDirection
+        (new Vector3(Input.GetAxis(Axis.Horizontal), -1.5f,
+            Input.GetAxis(Axis.Vertical))));
+    }
+
     private CharacterController _characterController;
     private Vector3 _moveDirection;
     private float _gravity = 20f;

@@ -10441,6 +10441,7 @@ MonoBehaviour:
   _staminaStats: {fileID: 0}
   _scoreLabel: {fileID: 0}
   _levelLabel: {fileID: 0}
+  _ammoLabel: {fileID: 0}
 --- !u!1 &3468204765080257795
 GameObject:
   m_ObjectHideFlags: 0

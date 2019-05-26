@@ -20,6 +20,7 @@ public class HealthScript : MonoBehaviour
         if(isPlayer)
         {
             _playerStats = GetComponent<PlayerStats>();
+            _playerMovement = GetComponent<PlayerMovement>();
         }
     }
 
@@ -51,6 +52,24 @@ public class HealthScript : MonoBehaviour
         }
     }
 
+    public void ApplyHealth(bool isFromPotion)
+    {
+        if (!isPlayer) return;
+
+        if (isFromPotion)
+        {
+            health += 20f;
+        }
+        else
+        {
+            health += 40f;
+        }
+
+        health = Mathf.Clamp(health, 0f, 100f);
+        print("Health increased: " + health);
+        _playerStats.DisplayHealthStats(health);
+    }
+
     public void PlayerDied()
     {
         var playerStats = GameObject.FindWithTag(TagsExtensions.PLAYER_TAG).GetComponent<PlayerStats>();
@@ -65,6 +84,7 @@ public class HealthScript : MonoBehaviour
             StartCoroutine(DeadSound());
 
             EnemyManager.instance.EnemyDied(true);
+            playerStats.IdleTime = 0f;
             playerStats.Score += KillingEnemiesScore["Cannibal"] * playerStats.Level;
         }
         if(isBoar)
@@ -76,10 +96,12 @@ public class HealthScript : MonoBehaviour
 
             StartCoroutine(DeadSound());
             EnemyManager.instance.EnemyDied(false);
+            playerStats.IdleTime = 2f;
             playerStats.Score += KillingEnemiesScore["Boar"] * playerStats.Level;
         }
         if(isPlayer)
         {
+            _playerMovement.Die();
             GameObject[] enemies = GameObject.FindGameObjectsWithTag(TagsExtensions.ENEMY_TAG);
             for(int i =0; i<enemies.Length; i++)
             {
@@ -121,6 +143,7 @@ public class HealthScript : MonoBehaviour
     private EnemyAnimator _enemyAnim;
     private NavMeshAgent _navAgent;
     private EnemyController _enemyController;
+    private PlayerMovement _playerMovement;
     public float health = 100f;
     public bool isPlayer, isBoar, isCannibal;
 

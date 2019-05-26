@@ -13,5 +13,7 @@ public class LocationUtils
         { "Z_MAX", 245f},
     };
 
-    public static Vector3 StartedFlarePoint = new Vector3(40, 27, 15);
+    public static Vector3 StartedFlarePoint = new Vector3(40f, 27f, 15f);
+    public static Vector3 StartedPotionPoint = new Vector3(55f, 27f, 11f);
+    public static Vector3 StartedAmmoPoint = new Vector3(33f, 27.5f, 210f);
 }

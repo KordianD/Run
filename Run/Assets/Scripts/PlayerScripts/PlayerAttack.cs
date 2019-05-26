@@ -1,11 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
     private WeaponManager _weaponManager;
     private float _nextTimeToFire;
+    private float _nextTimeToFireGun;
+
     public float fireRate = 15f;
 
     private Animator _zoomCameraAnim;
@@ -46,6 +46,7 @@ public class PlayerAttack : MonoBehaviour
 
     void WeaponShoot()
     {
+        if (_weaponManager.GetCurrentWeaponAmmo() < 1) return;
         if (_weaponManager.GetCurrentSelectedWeapon().fireType == WeaponFireType.MULTIPLE)
         {
             if (Input.GetMouseButton(0) && Time.time > _nextTimeToFire)
@@ -58,8 +59,9 @@ public class PlayerAttack : MonoBehaviour
         }
         else
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && Time.time > _nextTimeToFireGun)
             {
+                _nextTimeToFireGun = Time.time + 1.5f;
                 if (_weaponManager.GetCurrentSelectedWeapon().tag == TagsExtensions.AXE_TAG)
                 {
                     _weaponManager.GetCurrentSelectedWeapon().ShootAnimation();
@@ -88,7 +90,6 @@ public class PlayerAttack : MonoBehaviour
                     }
                 }
             }
-
         }
     }
 
@@ -150,5 +151,7 @@ public class PlayerAttack : MonoBehaviour
                     (DamageUtils.DamageByWeapon[_weaponManager.currentWeaponIndex]);
             }
         }
+
+        _weaponManager.BulletFired();
     }
 }

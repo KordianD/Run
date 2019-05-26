@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponManager : MonoBehaviour
@@ -13,7 +12,6 @@ public class WeaponManager : MonoBehaviour
     {
         currentWeaponIndex = 0;
         _weapons[currentWeaponIndex].gameObject.SetActive(true);
-
     }
 
     // Update is called once per frame
@@ -61,4 +59,37 @@ public class WeaponManager : MonoBehaviour
     {
         return _weapons[currentWeaponIndex];
     }
+
+    public double GetCurrentWeaponAmmo()
+    {
+        return _weaponsAmmos[currentWeaponIndex];
+    }
+
+    public void BulletFired()
+    {
+        _weaponsAmmos[currentWeaponIndex] -= 1d;
+    }
+
+    public void IncreaseAmmoByLevel()
+    {
+        _weaponsAmmos[2] += 20d;
+        _weaponsAmmos[3] += 10d;
+        _weaponsAmmos[4] += 30d;
+    }
+
+    public void IncreaseAmmoByItem()
+    {
+        _weaponsAmmos[2] += 40d;
+        _weaponsAmmos[3] += 20d;
+        _weaponsAmmos[4] += 60d;
+    }
+
+    private Dictionary<int, double> _weaponsAmmos = new Dictionary<int, double>
+    {
+        { 0, double.PositiveInfinity},
+        { 1, double.PositiveInfinity},
+        { 2, 20d },
+        { 3, 10d },
+        { 4, 30d }
+    };
 }
