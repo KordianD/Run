@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -101,6 +102,8 @@ public class HealthScript : MonoBehaviour
         }
         if(isPlayer)
         {
+            print("dasdsda");
+            _playerStats.SaveStatisticsFromGameToFile();
             _playerMovement.Die();
             GameObject[] enemies = GameObject.FindGameObjectsWithTag(TagsExtensions.ENEMY_TAG);
             for(int i =0; i<enemies.Length; i++)

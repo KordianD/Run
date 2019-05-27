@@ -52,21 +52,21 @@ public class PlayerStats : MonoBehaviour
         _staminaStats.fillAmount = staminaValue;
     }
 
-    public void SaveStatisticsFromGameToFile(int achievedScore)
+    public void SaveStatisticsFromGameToFile()
     {
-        string destination = Application.persistentDataPath + "/save.txt";
+        string destination =  "save.txt";
         if (!File.Exists(destination))
         {
             using (StreamWriter sw = File.CreateText(destination))
             {
-                sw.WriteLine(achievedScore.ToString());
+                sw.WriteLine(Score);
             }
         }
         else
         {
             using (StreamWriter sw = File.AppendText(destination))
             {
-                sw.WriteLine(achievedScore.ToString());
+                sw.WriteLine(Score.ToString());
             }
         }
     }
