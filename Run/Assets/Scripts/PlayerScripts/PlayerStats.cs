@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -46,6 +50,42 @@ public class PlayerStats : MonoBehaviour
         staminaValue /= 100f;
 
         _staminaStats.fillAmount = staminaValue;
+    }
+
+    public void SaveStatisticsFromGameToFile(int achievedScore)
+    {
+        string destination = Application.persistentDataPath + "/save.txt";
+        if (!File.Exists(destination))
+        {
+            using (StreamWriter sw = File.CreateText(destination))
+            {
+                sw.WriteLine(achievedScore.ToString());
+            }
+        }
+        else
+        {
+            using (StreamWriter sw = File.AppendText(destination))
+            {
+                sw.WriteLine(achievedScore.ToString());
+            }
+        }
+    }
+
+    public IEnumerable<int> ReadTopStatisticsFromFile()
+    {
+        List<int> results = new List<int>();
+        string destination = Application.persistentDataPath + "/save.txt";
+        using (StreamReader sr = File.OpenText(destination))
+        {
+            string s = "";
+            while ((s = sr.ReadLine()) != null)
+            {
+                results.Add(Int32.Parse(s));
+            }
+        }
+
+        results.OrderByDescending(i => i);
+        return results.Take(10);
     }
 
     private bool IsIdleTime()
