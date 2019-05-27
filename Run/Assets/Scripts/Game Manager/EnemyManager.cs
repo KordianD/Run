@@ -52,8 +52,7 @@ public class EnemyManager : MonoBehaviour
     {
         for(var i = 0; i < _cannibalEnemyCount; i++)
         {
-            var flareLocation = LocationUtils.FlareLocation;
-            if (RandomUtils._random.NextDouble() > 0.3)
+            if (RandomUtils._random.NextDouble() > 0.7)
             {
                 Instantiate(_canibalPrefab, _flarePosition, Quaternion.identity);
             }
@@ -72,7 +71,7 @@ public class EnemyManager : MonoBehaviour
         for (int i = 0; i < _boarEnemyCount; i++)
         {
             var flareLocation = LocationUtils.FlareLocation;
-            if (RandomUtils._random.NextDouble() > 0.3)
+            if (RandomUtils._random.NextDouble() > 0.7)
             {
                 Instantiate(_boarPrefab, _flarePosition, Quaternion.identity);
             }

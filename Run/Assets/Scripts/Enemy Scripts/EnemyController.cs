@@ -25,24 +25,17 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        try
+        if (_enemyState == EnemyState.PATROL)
         {
-            if (_enemyState == EnemyState.PATROL)
-            {
-                Patrol();
-            }
-            if (_enemyState == EnemyState.CHASE)
-            {
-                Chase();
-            }
-            if (_enemyState == EnemyState.ATTACK)
-            {
-                Attack();
-            }
+            Patrol();
         }
-        catch (Exception e)
+        if (_enemyState == EnemyState.CHASE)
         {
-            this.enabled = false;
+            Chase();
+        }
+        if (_enemyState == EnemyState.ATTACK)
+        {
+            Attack();
         }
     }
 
