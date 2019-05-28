@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class HealthScript : MonoBehaviour
 {
@@ -50,6 +51,7 @@ public class HealthScript : MonoBehaviour
         {
             PlayerDied();
             _isDead = true;
+           
         }
     }
 
@@ -102,7 +104,6 @@ public class HealthScript : MonoBehaviour
         }
         if(isPlayer)
         {
-            print("dasdsda");
             _playerStats.SaveStatisticsFromGameToFile();
             _playerMovement.Die();
             GameObject[] enemies = GameObject.FindGameObjectsWithTag(TagsExtensions.ENEMY_TAG);
@@ -115,15 +116,16 @@ public class HealthScript : MonoBehaviour
             GetComponent<PlayerAttack>().enabled = false;
             GetComponent<WeaponManager>().GetCurrentSelectedWeapon().gameObject.SetActive(false);
             EnemyManager.instance.StopSpawning();
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         }
 
-        if(tag == TagsExtensions.PLAYER_TAG)
-        {
-            Invoke("RestartGame", 3f);
-        }
-        else
-        {
-            Invoke("TurnOffGameObject", 3f);
+      if(tag == TagsExtensions.PLAYER_TAG)
+       {
+         Invoke("RestartGame", 3f);
+      }
+      else
+       {
+          Invoke("TurnOffGameObject", 3f);
         }
     }
 

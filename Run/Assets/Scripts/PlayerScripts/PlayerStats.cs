@@ -71,22 +71,7 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    public IEnumerable<int> ReadTopStatisticsFromFile()
-    {
-        List<int> results = new List<int>();
-        string destination = Application.persistentDataPath + "/save.txt";
-        using (StreamReader sr = File.OpenText(destination))
-        {
-            string s = "";
-            while ((s = sr.ReadLine()) != null)
-            {
-                results.Add(Int32.Parse(s));
-            }
-        }
 
-        results.OrderByDescending(i => i);
-        return results.Take(10);
-    }
 
     private bool IsIdleTime()
     {

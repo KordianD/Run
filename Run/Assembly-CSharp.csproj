@@ -84,6 +84,7 @@
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerSprintAndCrouch.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerStats.cs" />
+    <Compile Include="Assets\Scripts\PrintOnOff.cs" />
     <Compile Include="Assets\Scripts\Utils\AnimationUtils.cs" />
     <Compile Include="Assets\Scripts\Utils\DamageUtils.cs" />
     <Compile Include="Assets\Scripts\Utils\LocationUtils.cs" />
