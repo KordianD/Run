@@ -30,6 +30,8 @@ public class PrintOnOff : MonoBehaviour
         if (results.Count == 0)
         {
             GameObject.Find("textresult1").GetComponent<TextMeshProUGUI>().text = "";
+            GameObject.Find("textresult2").GetComponent<TextMeshProUGUI>().text = "";
+            GameObject.Find("textresult3").GetComponent<TextMeshProUGUI>().text = "";
             return;
         }
 
