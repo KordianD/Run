@@ -29,13 +29,15 @@ public class PrintOnOff : MonoBehaviour
 
         if (results.Count == 0)
         {
-            GameObject.Find("textresult1").GetComponent<TextMeshProUGUI>().text = 0.ToString();
+            GameObject.Find("textresult1").GetComponent<TextMeshProUGUI>().text = "";
             return;
         }
 
-
-       GameObject.Find("textresult1").GetComponent<TextMeshProUGUI>().text = results[0].ToString();
-
+        for (int i = 0; i < results.Count && i < 3; i++)
+        {
+            GameObject.Find("textresult" + (i + 1).ToString()).GetComponent<TextMeshProUGUI>().text = results[i].ToString();
+        }
+       
     }
     void OnEnable()
     {
@@ -45,7 +47,7 @@ public class PrintOnOff : MonoBehaviour
 
     public List<int> ReadTopStatisticsFromFile()
     {
-        List<int> results = new List<int>(0);
+        List<int> results = new List<int>();
         string destination = "save.txt";
 
          if (!File.Exists(destination))
